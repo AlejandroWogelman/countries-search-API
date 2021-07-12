@@ -25,15 +25,15 @@ export const CardCountries = ({
       </div>
       <div className="card-content">
         <h3>{name}</h3>
-        <h5>
+        <p>
           Population: <span>{population}</span>
-        </h5>
-        <h5>
+        </p>
+        <p>
           region:<span> {region}</span>
-        </h5>
-        <h5>
+        </p>
+        <p>
           Capital: <span>{capital}</span>
-        </h5>
+        </p>
       </div>
     </section>
   );
