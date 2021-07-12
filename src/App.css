@@ -1,38 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .App {
-  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.light {
+  --background-header-input: hsl(0, 0%, 100%);
+  --text: hsl(200, 15%, 8%);
+  --background-flags: hsl(0, 0%, 98%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark {
+  --background-header-input: hsl(209, 23%, 22%);
+  --text: hsl(0, 0%, 98%);
+  --background-flags: hsl(207, 26%, 17%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  padding: 20px 10%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  color: var(--text);
+  background-color: var(--background-header-input);
+  font-weight: 600;
+}
+.header span {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  padding: 20px 10%;
+  background-color: var(--background-flags);
+  box-shadow: rgba(0, 0, 0, 0.274) 0 -1px 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.fas,
+.far {
+  margin-right: 10px;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+.colores {
+  color: hsl(209, 23%, 22%);
+  color: hsl(207, 26%, 17%);
+  color: hsl(200, 15%, 8%);
+  color: hsl(0, 0%, 52%);
+  color: hsl(0, 0%, 98%);
+  color: hsl(0, 0%, 100%);
+}
+
+@media screen and (max-width: 530px) {
+  h1 {
+    font-size: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  .header span {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  .App {
+    min-width: 350px;
   }
 }

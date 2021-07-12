@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { Routes } from "./Components/Routes";
+import { useFetch } from "./Components/useFetch/useFetch";
 
 function App() {
+  //Seleccion de dark theme
+  const [theme, settheme] = useState(false);
+  const handleToggle = () => {
+    theme ? settheme(false) : settheme(true);
+  };
+
+  //url para peticiones
+  const [endpoint, setEndpoint] = useState(
+    "https://restcountries.eu/rest/v2/all"
+  );
+
+  //Peticiones al customHook
+  const [data, Loading] = useFetch(endpoint);
+
+  //URLs del input
+  const fetch = (data) => {
+    setEndpoint(data);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={theme ? "dark" : "light"}>
+        <header className="header">
+          <h1>Where in the world?</h1>
+          <span className="toggle" onClick={handleToggle}>
+            {theme ? (
+              <i className="fas fa-moon"></i>
+            ) : (
+              <i className="far fa-moon"></i>
+            )}
+            Dark Mode
+          </span>
+        </header>
+        <main>
+          <Routes data={data} Loading={Loading} fetch={fetch} />
+        </main>
+      </div>
     </div>
   );
 }
